@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ImageGalleryView: View {
     let images: [UIImage]
-    
+
     var body: some View {
         TabView {
             ForEach(0..<images.count, id: \.self) { index in
@@ -19,8 +19,7 @@ struct ImageGalleryView: View {
                     .padding()
                     .cornerRadius(8)
                     .shadow(radius: 3)
-                
-                // Black separator image after each real image (except the last one)
+
                 if index < images.count - 1 {
                     Rectangle()
                         .foregroundColor(.black)

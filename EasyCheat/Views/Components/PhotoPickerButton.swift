@@ -11,7 +11,7 @@ import PhotosUI
 struct PhotoPickerButton: View {
     @ObservedObject var viewModel: ImageViewModel
     @Binding var selectedItems: [PhotosPickerItem]
-    
+
     var body: some View {
         VStack {
             Spacer()

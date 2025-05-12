@@ -13,7 +13,7 @@ import PhotosUI
 struct ContentView: View {
     @StateObject private var viewModel = ImageViewModel()
     @State private var selectedItems: [PhotosPickerItem] = []
-    
+
     var body: some View {
         ZStack {
             if !viewModel.loadedImages.isEmpty {
@@ -24,6 +24,16 @@ struct ContentView: View {
 
             if viewModel.loadedImages.isEmpty {
                 PhotoPickerButton(viewModel: viewModel, selectedItems: $selectedItems)
+            }
+
+            if viewModel.isLoading {
+                Color.black.opacity(0.5)
+                    .ignoresSafeArea()
+
+                LoadingModalView(
+                    totalImages: viewModel.totalImagesToLoad,
+                    loadedImages: viewModel.imagesLoaded
+                )
             }
         }
         .onAppear() {
